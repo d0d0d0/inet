@@ -301,6 +301,9 @@ void Ipv4::handleIncomingDatagram(Packet *packet)
 
     if (!verifyCrc(ipv4Header)) {
         EV_WARN << "CRC error found, drop packet\n";
+        PacketDropDetails details;
+        details.setReason(INCORRECTLY_RECEIVED);
+        emit(packetDroppedSignal, packet, &details);
         delete packet;
         return;
     }
