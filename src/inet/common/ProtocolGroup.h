@@ -47,6 +47,7 @@ class INET_API ProtocolGroup
     static ProtocolGroup ipprotocol;
     static const ProtocolGroup ieee8022protocol;
     static const ProtocolGroup snapOui;
+    static const std::map<const Protocol *, int> l3Echo;
 };
 
 } // namespace inet

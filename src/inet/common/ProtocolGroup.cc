@@ -16,6 +16,7 @@
 //
 
 #include "inet/common/ProtocolGroup.h"
+#include "inet/networklayer/common/IpProtocolId_m.h"
 
 namespace inet {
 
@@ -125,5 +126,13 @@ const ProtocolGroup ProtocolGroup::ieee8022protocol("ieee8022protocol", {
     { 0x4242, &Protocol::stp },
 });
 
+const std::map<const Protocol *, int> ProtocolGroup::l3Echo( {
+    { &Protocol::ipv4, IP_PROT_ICMP },
+    { &Protocol::ipv6, IP_PROT_IPv6_ICMP },
+    { &Protocol::flood, IP_PROT_ECHO },
+    { &Protocol::gnp, IP_PROT_ECHO },
+    { &Protocol::probabilistic, IP_PROT_ECHO },
+    { &Protocol::wiseroute, IP_PROT_ECHO },
+});
 } // namespace inet
 
